@@ -1,0 +1,28 @@
+name: Features
+on:
+  push:
+    branches:
+    - feature/**
+    - hotfix/**
+jobs:
+  #---------------------------------------------------------------------------------------------------------------------
+  # Build
+  #---------------------------------------------------------------------------------------------------------------------
+  build:
+    name: Build
+    uses: bayudwiyansatria/.github/.github/workflows/build-php.yml@master
+    with:
+      PHP_VERSION: 8.1
+  #---------------------------------------------------------------------------------------------------------------------
+  # Test
+  #---------------------------------------------------------------------------------------------------------------------
+  test:
+    name: Test
+    needs: 
+    - build
+    uses: bayudwiyansatria/.github/.github/workflows/test-php.yml@master
+    with:
+      PHP_VERSION: 8.1
+      TEST_SKIP_CODECOV: true
+    secrets:
+      CODECOV_TOKEN: null
