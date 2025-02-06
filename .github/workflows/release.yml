@@ -1,26 +1,76 @@
-name: Release Action
-
+name: Release Dispatch
 on:
-  push:
-    tags:
-    - 'v*'
-
+  workflow_dispatch:
+    inputs:
+      MAJOR_VERSION:
+        type: number
+        description: Major Version
+        required: true
+        default: 0
+      MINOR_VERSION:
+        type: number
+        description: Minor Version
+        required: true
+        default: 0
+      INCREMENTAL_VERSION:
+        type: number
+        description: Patch Version
+        required: true
+        default: 1
 jobs:
+  #---------------------------------------------------------------------------------------------------------------------
+  # Build
+  #---------------------------------------------------------------------------------------------------------------------
+  build:
+    name: Build
+    uses: bayudwiyansatria/.github/.github/workflows/build-php.yml@master
+    with:
+      PHP_VERSION: 8.1
+  #---------------------------------------------------------------------------------------------------------------------
+  # Test
+  #---------------------------------------------------------------------------------------------------------------------
+  test:
+    name: Test
+    needs: 
+    - build
+    uses: bayudwiyansatria/.github/.github/workflows/test-php.yml@master
+    with:
+      PHP_VERSION: 8.1
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  #---------------------------------------------------------------------------------------------------------------------
+  # Release
+  #---------------------------------------------------------------------------------------------------------------------
   release:
-    name: Main
-    runs-on: ${{ matrix.os }}
-    strategy:
-        matrix:
-          java-version: [1.8]
-          os: [ubuntu-latest]
-    steps:
-    - name: Prepare
-      uses: actions/checkout@v1
-    - name: Set Up Java Development Kit
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ matrix.java-version }}
-    - name: Creating Release Draft
-      uses: toolmantim/release-drafter@v5.2.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    name: Release
+    uses: bayudwiyansatria/.github/.github/workflows/release-github.yml@master
+    with:
+      MAJOR_VERSION: ${{ inputs.MAJOR_VERSION }}
+      MINOR_VERSION: ${{ inputs.MINOR_VERSION }}
+      INCREMENTAL_VERSION: ${{ inputs.INCREMENTAL_VERSION }}
+      ARTIFACT_PACKAGES_TYPE: composer.json
+      ARTIFACT_ASSET: build
+      ARTIFACT_NAME: build
+      ARTIFACT_PATH: build
+      COVERAGE_ENABLED: true
+      COVERAGE_NAME: coverage
+      COVERAGE_PATH: dist/coverage
+      DOCS_ENABLED: false
+    secrets:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  #---------------------------------------------------------------------------------------------------------------------
+  # GitHub Pages
+  #---------------------------------------------------------------------------------------------------------------------
+  pages:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.repository.visibility == 'public' }}
+    name: GitHub Pages
+    needs: 
+    - release
+    uses: bayudwiyansatria/.github/.github/workflows/release-github-pages.yml@master
+    with:
+      ARTIFACT_NAME: docs
+      ARTIFACT_PATH: dist
+      ARTIFACT_ROOT: dist
+    secrets:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
