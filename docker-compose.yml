@@ -1,0 +1,56 @@
+services:
+  laravel:
+    image: bayudwiyansatria/laravel:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel
+    working_dir: /var/www/html
+    networks:
+    - app-network
+  nginx:
+    image: bayudwiyansatria/nginx:laravel
+    build:
+      context: .
+      dockerfile: docker/nginx/nginx.Dockerfile
+    container_name: nginx
+    working_dir: /var/www/html
+    volumes:
+    - ./build:/var/www/html
+    ports:
+    - "8080:80"
+    depends_on:
+    - laravel
+    networks:
+    - app-network
+  mariadb:
+    image: mariadb:11.4.5
+    container_name: mariadb
+    env_file:
+    - .env.docker
+    volumes:
+    - mariadb-data:/var/lib/mysql
+    networks:
+    - app-network
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.2
+    restart: always
+    container_name: phpmyadmin
+    depends_on:
+    - mariadb
+    ports:
+    - '8891:80'
+    env_file:
+    - .env.docker
+    networks:
+    - app-network
+  redis:
+    image: redis:7.4.2
+    container_name: redis
+    networks:
+    - app-network
+volumes:
+  mariadb-data:
+networks:
+  app-network:
+    driver: bridge

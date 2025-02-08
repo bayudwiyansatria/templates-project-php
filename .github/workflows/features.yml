@@ -13,6 +13,7 @@ jobs:
     uses: bayudwiyansatria/.github/.github/workflows/build-php.yml@master
     with:
       PHP_VERSION: 8.1
+      PHP_BUILD_COMMAND: composer run build:ci
   #---------------------------------------------------------------------------------------------------------------------
   # Test
   #---------------------------------------------------------------------------------------------------------------------
@@ -23,6 +24,7 @@ jobs:
     uses: bayudwiyansatria/.github/.github/workflows/test-php.yml@master
     with:
       PHP_VERSION: 8.1
+      PHP_BUILD_COMMAND: composer run build:ci
       TEST_SKIP_CODECOV: true
     secrets:
       CODECOV_TOKEN: null

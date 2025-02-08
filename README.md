@@ -24,15 +24,10 @@ Java Security Library
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be clone this com.bayudwiyansatria.auth.repository.
+```shell
+php artisan session:table
+php artisan migrate
 
-```xml
-
-<dependency>
-  <groupId>com.bayudwiyansatria</groupId>
-  <artifactId>cipher-pol</artifactId>
-  <version>${cipher-pol.version}</version>
-</dependency>
 ```
 
 ## Contributing
