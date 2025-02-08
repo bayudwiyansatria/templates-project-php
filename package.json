@@ -1,15 +1,58 @@
 {
-  "private": true,
+  "name": "@bayudwiyansatria/templates-project-php",
+  "version": "0.0.1",
+  "description": "The skeleton application for the Laravel framework.",
+  "keywords": [
+    "sdk",
+    "core"
+  ],
+  "homepage": "https://bayudwiyansatria.github.io/templates-project-php",
+  "bugs": {
+    "url": "https://github.com/bayudwiyansatria/templates-project-php/issues",
+    "email": "bayudwiyansatria@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Bayu Dwiyan Satria",
+    "email": "bayudwiyansatria@gmail.com",
+    "url": "https://bayudwiyansatria.github.io"
+  },
+  "contributors": [],
+  "maintainers": [],
+  "main": "lib/index.min.js",
   "type": "module",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/",
+    "!lib/*.map"
+  ],
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bayudwiyansatria/templates-project-php.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build"
+  },
+  "config": {},
+  "dependencies": {
+    "crypto-browserify": "^3.12.1"
   },
   "devDependencies": {
     "axios": "^1.6.4",
     "laravel-vite-plugin": "^1.0.0"
   },
-  "dependencies": {
-    "crypto-browserify": "^3.12.1"
+  "peerDependencies": {},
+  "bundledDependencies": [],
+  "private": true,
+  "module": "lib/index.min.mjs",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   }
 }
