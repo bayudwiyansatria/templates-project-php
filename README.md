@@ -5,8 +5,9 @@
 [![Code Of Conduct](https://img.shields.io/badge/Community-Code%20of%20Conduct-orange.svg?style=flat-square)](CODE_OF_CONDUCT.md)
 [![Support](https://img.shields.io/badge/Community-Support-red.svg?style=flat-square)](SUPPORT.md)
 [![Contributing](https://img.shields.io/badge/Community-Contribution-yellow.svg?style=flat-square)](CONTRIBUTING.md)
-
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+
+---
 
 ### Project Overview
 
