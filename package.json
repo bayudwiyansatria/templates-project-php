@@ -19,18 +19,7 @@
   },
   "contributors": [],
   "maintainers": [],
-  "main": "lib/index.min.js",
   "type": "module",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib/",
-    "!lib/*.map"
-  ],
-  "directories": {
-    "doc": "docs",
-    "lib": "lib",
-    "test": "test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bayudwiyansatria/templates-project-php.git"
@@ -50,7 +39,6 @@
   "peerDependencies": {},
   "bundledDependencies": [],
   "private": true,
-  "module": "lib/index.min.mjs",
   "publishConfig": {
     "access": "restricted",
     "registry": "https://npm.pkg.github.com"
