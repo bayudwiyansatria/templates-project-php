@@ -65,15 +65,15 @@ jobs:
   #---------------------------------------------------------------------------------------------------------------------
   # GitHub Pages
   #---------------------------------------------------------------------------------------------------------------------
-  pages:
-    if: ${{ github.event_name == 'workflow_dispatch' && github.event.repository.visibility == 'public' }}
-    name: GitHub Pages
-    needs: 
-    - release
-    uses: bayudwiyansatria/.github/.github/workflows/release-github-pages.yml@master
-    with:
-      ARTIFACT_NAME: docs
-      ARTIFACT_PATH: dist
-      ARTIFACT_ROOT: dist
-    secrets:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  # pages:
+  #   if: ${{ github.event_name == 'workflow_dispatch' && github.event.repository.visibility == 'public' }}
+  #   name: GitHub Pages
+  #   needs: 
+  #   - release
+  #   uses: bayudwiyansatria/.github/.github/workflows/release-github-pages.yml@master
+  #   with:
+  #     ARTIFACT_NAME: docs
+  #     ARTIFACT_PATH: dist
+  #     ARTIFACT_ROOT: dist
+  #   secrets:
+  #     GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
