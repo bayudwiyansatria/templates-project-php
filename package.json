@@ -36,11 +36,11 @@
     "axios": "^1.6.4",
     "laravel-vite-plugin": "^1.0.0"
   },
-  "peerDependencies": {},
   "bundledDependencies": [],
   "private": true,
   "publishConfig": {
     "access": "restricted",
     "registry": "https://npm.pkg.github.com"
-  }
+  },
+  "bundleDependencies": []
 }
