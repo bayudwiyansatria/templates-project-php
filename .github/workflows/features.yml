@@ -24,4 +24,5 @@ jobs:
     uses: bayudwiyansatria/.github/.github/workflows/test-php.yml@master
     with:
       PHP_VERSION: 8.1
-      PHP_COMMAND: composer run build:ci
+      PHP_COMMAND: composer run test:ci
+  

@@ -1,0 +1,12 @@
+name: Clean Old Artifact
+on:
+  schedule:
+  - cron: '0 1 * * *'
+jobs:
+  #---------------------------------------------------------------------------------------------------------------------
+  # Clean Up
+  #---------------------------------------------------------------------------------------------------------------------
+  build:
+    name: Build
+    uses: bayudwiyansatria/.github/.github/workflows/github-storage-cleaner.yml@master
+  

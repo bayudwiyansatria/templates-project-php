@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "The skeleton application for the Laravel framework.",
   "keywords": [
-    "sdk",
-    "core"
+    "laravel",
+    "framework"
   ],
   "homepage": "https://bayudwiyansatria.github.io/templates-project-php",
   "bugs": {
@@ -19,7 +19,6 @@
   },
   "contributors": [],
   "maintainers": [],
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bayudwiyansatria/templates-project-php.git"
@@ -34,7 +33,7 @@
   },
   "devDependencies": {
     "axios": "^1.6.4",
-    "laravel-vite-plugin": "^1.0.0"
+    "laravel-vite-plugin": "^1.2.0"
   },
   "bundledDependencies": [],
   "private": true,
@@ -42,5 +41,5 @@
     "access": "restricted",
     "registry": "https://npm.pkg.github.com"
   },
-  "bundleDependencies": []
+  "type": "module"
 }
