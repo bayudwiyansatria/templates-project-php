@@ -12,8 +12,7 @@ jobs:
     uses: bayudwiyansatria/.github/.github/workflows/build-php.yml@master
     with:
       PHP_VERSION: 8.1
-      PHP_BUILD_COMMAND: composer run build:ci
-      NODE_VERSION: 21
+      PHP_COMMAND: composer run build:ci
   #---------------------------------------------------------------------------------------------------------------------
   # Test
   #---------------------------------------------------------------------------------------------------------------------
@@ -24,8 +23,18 @@ jobs:
     uses: bayudwiyansatria/.github/.github/workflows/test-php.yml@master
     with:
       PHP_VERSION: 8.1
-      PHP_BUILD_COMMAND: composer run build:ci
-      TEST_SKIP_CODECOV: true
+      PHP_COMMAND: composer run build:ci
+  #---------------------------------------------------------------------------------------------------------------------
+  # Code Quality
+  #---------------------------------------------------------------------------------------------------------------------
+  code-quailty:
+    name: Code Quality
+    needs: 
+    - test
+    uses: bayudwiyansatria/.github/.github/workflows/code-analysis-codecov.yml@master
+    with:
+      ARTIFACT_NAME: coverage
+      ARTIFACT_PATH: composer run build:ci
     secrets:
-      CODECOV_TOKEN: null
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   
