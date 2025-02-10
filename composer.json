@@ -87,16 +87,18 @@
       "cp .env.example .env",
       "php artisan optimize",
       "php artisan key:generate",
-      "composer run build:node",
       "composer install",
-      "rm -rf build && mkdir -p build && cp -r app bootstrap config database public resources routes storage vendor artisan build/",
-      "cp composer.json .env build/"
+      "rm -rf build && mkdir -p build && cp -r app bootstrap config database public resources routes storage vendor artisan tests build/",
+      "cp phpunit.xml composer.json .env build/"
     ],
     "build:node": [
       "npm install",
       "npm run build"
     ],
     "test": [
+      "php artisan test --coverage-clover=dist/coverage/clover.xml"
+    ],
+    "test:ci": [
       "php artisan test --coverage-clover=dist/coverage/clover.xml"
     ],
     "serve": [

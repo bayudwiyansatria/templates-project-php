@@ -13,6 +13,7 @@ jobs:
     with:
       PHP_VERSION: 8.1
       PHP_COMMAND: composer run build:ci
+      NODE_VERSION: 21
   #---------------------------------------------------------------------------------------------------------------------
   # Test
   #---------------------------------------------------------------------------------------------------------------------
@@ -23,7 +24,7 @@ jobs:
     uses: bayudwiyansatria/.github/.github/workflows/test-php.yml@master
     with:
       PHP_VERSION: 8.1
-      PHP_COMMAND: composer run build:ci
+      PHP_COMMAND: composer run test:ci
   #---------------------------------------------------------------------------------------------------------------------
   # Code Quality
   #---------------------------------------------------------------------------------------------------------------------
@@ -34,7 +35,7 @@ jobs:
     uses: bayudwiyansatria/.github/.github/workflows/code-analysis-codecov.yml@master
     with:
       ARTIFACT_NAME: coverage
-      ARTIFACT_PATH: composer run build:ci
+      ARTIFACT_PATH: build/dist/coverage
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   
