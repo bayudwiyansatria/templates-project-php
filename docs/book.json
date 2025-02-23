@@ -1,0 +1,7 @@
+{
+  "title": "PHP Project Template",
+  "author": "Bayu Dwiayn Satria",
+  "description": "A comprehensive template for PHP projects, including GitHub Community Health Files, Workflow, and Actions.",
+  "language": "en",
+  "plugins": ["search", "fontsettings"]
+}
