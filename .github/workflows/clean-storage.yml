@@ -2,6 +2,8 @@ name: Clean Old Artifact
 on:
   schedule:
   - cron: '0 1 * * *'
+permissions:
+  actions: write
 jobs:
   #---------------------------------------------------------------------------------------------------------------------
   # Clean Up
